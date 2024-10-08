@@ -26,7 +26,8 @@ done
 dowork
 
 > example.done
-sleep 1
+## you should sleep slightly more than elect itself
+sleep 6
 ```
 
 License
