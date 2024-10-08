@@ -5,8 +5,17 @@ A trivial modification of the [reference](https://github.com/kubernetes/client-g
 
 Basic usage:
 ```
-go run main.go -kubeconfig=/path/to/kubeconfig -logtostderr=true -lease-lock-name=example -lease-lock-namespace=default -id=1 &
+curl -L -o e.tgz https://github.com/Cenness/elect/releases/download/1.0.0/elect.tar.gz
+tar xf e.tgz && rm -f e.tgz
+chmod +x elect && mv elect /opt
 
+/opt/elect \
+  -kubeconfig=/path/to/kubeconfig \
+  -logtostderr=true \
+  -lease-lock-name=example \
+  -lease-lock-namespace=default \
+  -id=1 &
+  
 while true; do
   if [ -f example.leader ]; then
     break
