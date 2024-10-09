@@ -15,6 +15,7 @@ chmod +x elect && mv elect /opt
   -lease-lock-name=example \
   -lease-lock-namespace=default \
   -id=1 &
+elect_pid="$!"
   
 while true; do
   if [ -f example.leader ]; then
@@ -26,8 +27,7 @@ done
 dowork
 
 > example.done
-## you should sleep slightly more than elect itself
-sleep 6
+wait $elect_pid
 ```
 
 License
